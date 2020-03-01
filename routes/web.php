@@ -13,10 +13,16 @@
 
 Route::get('/', "ClienteController@index");
 
-
+Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+
+Route::get('/cerrar_sesion', function() {
+    Auth::logout();
+    return redirect('/');
+});
 
 
 Route::get('/categorias', "ClienteController@mostrarCategoria");
