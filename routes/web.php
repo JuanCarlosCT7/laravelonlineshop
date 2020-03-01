@@ -19,6 +19,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::get('/proceder_compra', function() {
+    return view('/proceder_compra');
+});
+
+
 
 Route::get('/cerrar_sesion', function() {
     Auth::logout();
@@ -36,6 +41,14 @@ Route::get('/categoria/{nombre_categoria}', "ClienteController@mostrarProductos"
 Route::get('/carrito', function() {
     return view('/carrito');
 });
+
+Route::get('/comprando', "PedidoController@addPedido");
+
+Route::get('/compra_confirmada', function() {
+    return view('/cliente/compra_confirmada');
+});
+
+
 
 
 Route::get('/add_carrito/{id}', "CartController@add");
