@@ -19,6 +19,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 
+Route::get('/restablecer_password', function() {
+    return view('/restablecer_password');
+});
+
+
 Route::get('/proceder_compra', function() {
     return view('/proceder_compra');
 });
@@ -48,7 +53,14 @@ Route::get('/compra_confirmada', function() {
     return view('/cliente/compra_confirmada');
 });
 
+Route::get('/mis_pedidos', "PedidoController@miPedido");
 
+
+Route::get('/anular_pedido/{id}', function($id) {
+    return view('/cliente/anular_pedido', ['id' => $id]);
+});
+
+Route::get('/pedido_anulado/{id}', "PedidoController@anularPedido");
 
 
 Route::get('/add_carrito/{id}', "CartController@add");
