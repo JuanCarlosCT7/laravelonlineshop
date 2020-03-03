@@ -18,6 +18,20 @@
     <link rel="stylesheet" href="{{asset('/assets/css/aos.css')}}">
 
     <link rel="stylesheet" href="{{asset('/assets/css/style.css')}}">
+
+    <style>
+      /* Chrome, Safari, Edge, Opera */
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      
+      /* Firefox */
+      input[type=number] {
+        -moz-appearance:textfield;
+      }
+      </style>
     
   </head>
   
@@ -50,8 +64,8 @@
                 @endif
                 
                @if (Auth::check())
-                  <li><a href="{{url('/mis_pedidos')}}"><span class="icon icon-folder"></span> Mis pedidos</a></li>
-                <li><a href="{{url('/mostrar_usuario')}}"><span class="icon icon-user"></span> {{Auth::user()->username}}</a></li>
+                  <li><a href="{{url('/mis_pedidos')}}"><span class="icon icon-list-alt"></span> Mis pedidos</a></li>
+                <li><a href="{{url('/perfil_usuario')}}"><span class="icon icon-user"></span> {{Auth::user()->username}}</a></li>
                   <!--<li><a href="{{url('/datos_usuario')}}"><span class="icon icon-user"></span>Datos Envío</a></li> -->
 
                   <li><span><a href="{{url('/cerrar_sesion')}}"></span class="icon icon-forward"> Cerrar Sesión</a></li>
@@ -136,7 +150,7 @@
               </ul>
             </li>
             <li><a href="{{url('/productos')}}">Productos</a></li>
-            <li><a href="#">Contacto</a></li>
+            <li><a href="{{url('/contacto')}}">Contacto</a></li>
           </ul>
         </div>
       </nav>

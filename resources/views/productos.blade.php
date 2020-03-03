@@ -28,28 +28,21 @@
                   <a href="{{url('/producto/'. $producto['id'])}}"><img src="{{asset('/'. $producto['imagen'])}}" alt="Image placeholder" class="img-fluid"></a>
                 </figure>
 
-                <div class="block-4-text p-4">
+                <div class="block-4-text">
 
-                  <h3><a href="{{url('/producto/'. $producto['id'])}}">{{$producto['nombre']}}</a></h3>
+                  <h3><a href="{{url('/producto/'. $producto['id'] )}}">{{$producto['nombre']}}</a></h3>
                   
                   <p class="font-weight-bold" style="color: black">{{$producto['precio_venta']}}€</p>
 
                   <div class="add-to-cart">
-                      <a class="add-to-cart-btn btn" href="{{ url('/add_carrito/' . $producto['id']) }}"><i class="icon icon-shopping_cart"></i> Añadir al Carrito</a>
+                      <a class="add-to-cart-btn btn" href="{{ url('/add_carrito/' . $producto['id'] . '/1') }}"><i class="icon icon-shopping_cart"></i> Añadir al Carrito</a>
                   </div>
 
                 </div>
               </div>
             </div>
 
-        @endforeach
-
-          <!-- ----------------------------------------------------------- -->
-        
-
-          <!-- ----------------------------------------------------------------- -->
-
-           
+        @endforeach       
 
 
           </div>

@@ -46,20 +46,7 @@ class ClienteController extends Controller
 
         }
 
-        // MIRAR LUEGO $categoria_drone = Categoria::seelct('nombre');
-
-
-
         return view('index', ['destacados' => $productos_destacados] );
-
-        /*
-        $productos = Producto::where([['destacado','=', 1],
-                                      ['fecha_inicial', '<', date('Y-m-d')],
-                                      ['fecha_final', '>', date('Y-m-d')],
-                                      ['fecha_final', '>', 'fecha_inicial'],
-                                    
-        ])->get();
-        */
 
     }
 
@@ -113,7 +100,20 @@ class ClienteController extends Controller
 
     }
 
+    
+        /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function mostrarCarrito()
+    {
 
+        
+        return view('carrito');
+
+    }
+    
 
     /**
      * Show the form for creating a new resource.

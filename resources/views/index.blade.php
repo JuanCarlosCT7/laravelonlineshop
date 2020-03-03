@@ -32,7 +32,7 @@
                     <h3 class="font-weight-bold" style="color: black">{{$destacado['precio_venta']}}€ </h3><br>
 
                     <div class="add-to-cart">
-                        <a class="add-to-cart-btn btn" href="{{url('/add_carrito/' . $destacado['id']) }}"><i class="icon icon-shopping_cart"></i> Añadir al Carrito</a>
+                        <a class="add-to-cart-btn btn" href="{{url('/add_carrito/' . $destacado['id']. '/1') }}"><i class="icon icon-shopping_cart"></i> Añadir al Carrito</a>
                     </div>
 
                   </div>

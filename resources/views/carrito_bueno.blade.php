@@ -8,15 +8,8 @@
 <div class="site-section">
     <div class="container">
       <div class="row mb-5">
-        <div class="col-md-12">
+        <form class="col-md-12" method="post">
           <div class="site-blocks-table">
-
-            @if (Session::has('error'))
-              <div class="alert alert-danger" role="alert">
-                No hay suficiente <b>stock</b> para este artículo.
-              </div>
-            @endif
-
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -42,53 +35,49 @@
                     <h2 class="h5 text-black">{{ $item->name }}</h2>
                   </td>
                   <td class="h4 text-black">{{ $item->price }} €</td>
-
-                  <!-- --------------------------------------------------------------------------------------- -->
-
                   <td>
-                    <form action="{{url('/add_carrito/'. $item->id . '/1')}}" method="POST">
-
-                    @csrf
-
-                    <center>
-                      <div class="input-group mb-1" style="max-width: 120px;">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-
-                        <input type="number" autocomplete="off" class="form-control text-center" name="cantidad" value="{{ $item->quantity }}" min="1" max="5" readonly>
-
-
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
+                    <div class="input-group mb-3" style="max-width: 120px;">
+                      <div class="input-group-prepend">
+                        <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                       </div>
-                    </center>
 
-                     <input type="submit" class="btn btn-primary" value="Actualizar">
-                    </form>
+
+                      <input type="text" class="form-control text-center" name="quantity" value="{{ $item->quantity }}" aria-label="Example text with button addon" aria-describedby="button-addon1" readonly>
+
+
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                      </div>
+                    </div>
 
                   </td>
-
-                  <!-- --------------------------------------------------------------------------------------- -->
-                  
                   <td class="h4 text-black"> {{ $item->price * $item->quantity }} €</td>
 
                 <td><a href="{{ url('/delete_carrito/' . $item->id) }}" class="btn btn-primary btn-sm">X</a></td>
                 </tr>
+
+              
                 
                 @endforeach
                 
+
+
               </tbody>
             </table>
           </div>
-        </div>
+        </form>
       </div>
 
       <div class="row">
         <div class="col-md-6">
           <div class="row mb-5">
+            <div class="col-md-6 mb-3 mb-md-0">
 
+              <button onclick="location.href='{{url('/carrito')}}'" class="btn btn-primary btn-sm btn-block" >Actualizar Carrito</button>
+              
+              
+
+            </div>
             <div class="col-md-6">
               <button onclick="location.href='{{url('/productos')}}'" class="btn btn-outline-primary btn-sm btn-block">Continuar Comprando</button>
             </div>

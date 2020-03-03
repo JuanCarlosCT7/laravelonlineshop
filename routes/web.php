@@ -11,13 +11,16 @@
 |
 */
 
+
 Route::get('/', "ClienteController@index");
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+Route::get('/contacto', function() {
+    return view('/contacto');
+});
 
 Route::get('/restablecer_password', function() {
     return view('/restablecer_password');
@@ -63,11 +66,19 @@ Route::get('/anular_pedido/{id}', function($id) {
 Route::get('/pedido_anulado/{id}', "PedidoController@anularPedido");
 
 
-Route::get('/add_carrito/{id}', "CartController@add");
+Route::any('/add_carrito/{id}/{cantidad}', "CartController@add");
+
+//Route::post('/update_carrito', "CartController@update");
 
 Route::get('/delete_carrito/{id}', "CartController@delete");
 
 //-------------------------------
+
+
+Route::get('/perfil_usuario', function() {
+    return view('/cliente/perfil_usuario');
+});
+
 
 Route::get('/{nombre_categoria}', "ClienteController@mostrarProductos");
 

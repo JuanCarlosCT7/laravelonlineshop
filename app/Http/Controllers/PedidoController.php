@@ -9,6 +9,7 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Pedido;
+use App\Producto;
 use App\LineaPedido;
 use Illuminate\Support\Facades\Auth;
 use Cart;
@@ -28,14 +29,18 @@ class PedidoController extends Controller
 
         foreach(Cart::getContent() as $item){
 
-        $idPedido = $pedido->id;
-        LineaPedido::create(['cantidad'=>Cart::get($item->id)->quantity,
-        'precio'=>$item->price,
-        'producto_id'=>$item->id,
-        'pedido_id'=>$idPedido
-        ]);
+            $idPedido = $pedido->id;
+            LineaPedido::create(['cantidad'=>Cart::get($item->id)->quantity,
+            'precio'=>$item->price,
+            'producto_id'=>$item->id,
+            'pedido_id'=>$idPedido
+            ]);
+ 
+            $producto = Producto::where('id', $item->id)->first();
 
-            }
+            Producto::where('id', $item->id)->update(['stock'=> $producto->stock - Cart::get($item->id)->quantity]);
+
+        }
         
             $data = [
                 'titulo' => 'Pedido LaravelShop'
@@ -95,7 +100,7 @@ class PedidoController extends Controller
      */
     public function miPedido()
     {
-        $mispedidos = Pedido::where('usuario_id', Auth::id())->get();
+        $mispedidos = Pedido::where('usuario_id', Auth::id())->orderBy('fecha','DESC')->get(); //->paginate(5)
         return view('/cliente/mis_pedidos', ['mispedidos' => $mispedidos]);
 
     }

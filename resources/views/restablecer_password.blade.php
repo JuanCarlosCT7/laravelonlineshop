@@ -1,8 +1,6 @@
-@if(Auth::check())
-    @include("cliente/header")
-@else
-    @include("invitado/header")
-@endif
+
+@include("invitado/header")
+
 
 <div class="site-section">
 	
@@ -15,20 +13,20 @@
         
         <div class="col-md-6">
 
-          <form action="{{ route('restablecer_password') }}" method="POST">
+          <form action="" method="POST">
             
             <div class="p-3 p-lg-5 border">
               <div class="form-group row">
             
                 <div class="col-md-12">
                     <label for="email" class="text-black">Email <span class="text-danger">*</span></label>
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                    <input id="email" type="email" class="form-control mb-4 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
   
                     @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror
+                    @enderror
                
                   </div>
                 

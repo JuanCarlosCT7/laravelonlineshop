@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Validation\Rule;
+
 use Illuminate\Http\Request;
 use App\Producto;
 use Cart;
@@ -9,14 +11,29 @@ use Cart;
 class CartController extends Controller
 {
     
-    public function add($id){
+    public function add($id, $cantidad, Request $request){
 
         $producto = Producto::where('id', $id)->first();
+        
+       if ($request->has('cantidad')) {
 
-        Cart::add($producto->id, $producto->nombre, $producto->precio_venta, 1, array('imagen'=> $producto->imagen));
+        $cantidad = $request->cantidad;
 
-        return back();
+       } 
 
+        $stock = $producto->stock;
+        $cantidad_carrito = Cart::get($id);
+        
+        if ($cantidad_carrito['quantity'] + $cantidad <= $stock){
+            
+            Cart::add($producto->id, $producto->nombre, $producto->precio_venta, $cantidad, array('imagen'=> $producto->imagen));
+
+            return back();
+
+        }else{
+
+            return redirect('/carrito')->with('error', 0);
+        }
 
     }
 
@@ -31,10 +48,28 @@ class CartController extends Controller
         ));
     */
 
+
+    public function update(Request $request){
+
+        $cantidad = $request->quantity;
+        $id_producto = $request->id;
+        $producto = Producto::findOrFail($id_producto);
+        $stock = $producto->stock;
+        
+        if ($quantity < $stock){
+        
+            Cart::update($id_producto,$request->quantity);
+
+        }else{
+        
+            }
+        
+    }
+
     public function delete($id){
 
         Cart::remove($id);
-
         return back();
     }
+    
 }

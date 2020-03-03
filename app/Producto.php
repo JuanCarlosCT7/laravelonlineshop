@@ -8,5 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class Producto extends Model
 {
+
+    public $timestamps = false;
+
+    
     protected $table = 'producto';
 }
