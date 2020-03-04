@@ -79,4 +79,5 @@ class RegisterController extends Controller
             'direccion' => $data['direccion'],
         ]);
     }
+
 }

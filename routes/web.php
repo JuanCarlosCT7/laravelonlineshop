@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', "ClienteController@index");
+Route::get('/', "InvitadoController@index");
 
 Auth::routes();
 
@@ -20,10 +20,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/contacto', function() {
     return view('/contacto');
-});
-
-Route::get('/restablecer_password', function() {
-    return view('/restablecer_password');
 });
 
 
@@ -39,10 +35,10 @@ Route::get('/cerrar_sesion', function() {
 });
 
 
-Route::get('/categorias', "ClienteController@mostrarCategoria");
+Route::get('/categorias', "InvitadoController@mostrarCategoria");
 
 
-Route::get('/categoria/{nombre_categoria}', "ClienteController@mostrarProductos");
+Route::get('/categoria/{nombre_categoria}', "InvitadoController@mostrarProductos");
 
 // CARRITO --------------------
 
@@ -57,6 +53,10 @@ Route::get('/compra_confirmada', function() {
 });
 
 Route::get('/mis_pedidos', "PedidoController@miPedido");
+
+
+
+Route::get('/descarga_pdf/{id}', "PedidoController@downloadPdf"); /* REVISAR DESCARGA DE PDF */
 
 
 Route::get('/anular_pedido/{id}', function($id) {
@@ -75,14 +75,26 @@ Route::get('/delete_carrito/{id}', "CartController@delete");
 //-------------------------------
 
 
-Route::get('/perfil_usuario', function() {
-    return view('/cliente/perfil_usuario');
+Route::get('/datos_usuario', function() {
+    return view('/cliente/datos_usuario');
+});
+
+Route::get('/perfil', function() {
+    return view('/cliente/perfil');
+});
+
+Route::post('/cliente/modificar_datos', "ClienteController@update");
+
+Route::get('/baja_confirmada', "ClienteController@bajaUsuario");
+
+Route::get('/confirmacion_baja', function() {
+    return view('/cliente/confirmacion_baja');
 });
 
 
-Route::get('/{nombre_categoria}', "ClienteController@mostrarProductos");
+Route::get('/{nombre_categoria}', "InvitadoController@mostrarProductos");
 
-Route::get('/producto/{id}', "ClienteController@productoSeleccionado");
+Route::get('/producto/{id}', "InvitadoController@productoSeleccionado");
 
 
 

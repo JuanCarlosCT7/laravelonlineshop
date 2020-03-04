@@ -103,6 +103,8 @@ class PedidoController extends Controller
         $mispedidos = Pedido::where('usuario_id', Auth::id())->orderBy('fecha','DESC')->get(); //->paginate(5)
         return view('/cliente/mis_pedidos', ['mispedidos' => $mispedidos]);
 
+    
+
     }
 
     /**
@@ -117,6 +119,16 @@ class PedidoController extends Controller
         ]);
         return redirect('/mis_pedidos');
 
+    }
+
+    public function downloadPdf($id)
+    {
+        $data = LineaPedido::where("pedido_id", $id)->get();
+
+        $pdf= PDF::loadView('email', $data)->save(storage_path('app/public/') . 'pedido.pdf');
+        return $pdf->download('pedido.pdf');
+        
+        
     }
 
 

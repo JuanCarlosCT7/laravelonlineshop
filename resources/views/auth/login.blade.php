@@ -52,7 +52,11 @@
                 <div class="col-md-6">
                   <input type="submit" class="btn btn-primary btn-lg btn-block" value="INICIAR SESIÓN"><br><br>
 
-                  <a href="{{url('/restablecer_password') }}">¿Has olvidado la contraseña?</a>
+
+                  @if (Route::has('password.request'))
+                            <a href="{{route('password.request')}}">¿Has olvidado la contraseña?  &nbsp;<span class="icon icon-lock"></span></a>
+                    @endif
+
 
                 </div>
               </div>

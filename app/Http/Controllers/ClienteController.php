@@ -4,160 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Producto;
-use App\Categoria;
+use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use App\User;
+use Auth;
 
 class ClienteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        
-        $categorias = Categoria::all(); 
-
-        session(['categorias' => $categorias]);
-
-        //$categorias->toArray();
-
-       // $productos = Producto::where('destacado','=', 1)->get();
-
-       
-       $productos_destacados = Producto::where('destacado','=', 1)
-                    ->orWhere('fecha_inicial', '<', date('Y-m-d'))
-                    ->orWhere('fecha_final', '>', date('Y-m-d'))
-                    ->orWhere('fecha_final', '>', 'fecha_inicial')
-                    ->get()->toArray();
-
-        $i = -1;
-
-        foreach ($productos_destacados  as $producto) {
-
-            $i++;
-
-            $categoria_producto = Categoria::where('id', $producto['categoria_id'])->first();
-
-
-            $productos_destacados[$i]['nombre_categoria'] = $categoria_producto->nombre;
-
-        }
-
-        return view('index', ['destacados' => $productos_destacados] );
-
-    }
-
-    /**
-     * Mostrar los productos de la base de datos.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function mostrarProductos($nombre_categoria)
-    {
-
-        if ($nombre_categoria != 'productos') {
-
-            $categoria_seleccionada = Categoria::where('nombre', $nombre_categoria)->first();
-
-            $productos_categoria = Producto::where('categoria_id', $categoria_seleccionada['id'])->paginate(3);
-
-            return view('productos', ['productos' => $productos_categoria]);
-        
-        } else {
-
-            $productos = Producto::select('*')->paginate(6);
-            return view('productos', ['productos' => $productos]);
-
-        }
-    }
-
-     /**
-     * Mostrar los productos de la base de datos.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function mostrarCategoria()
-    {
-        $categorias = Categoria::select('*');
-        return view('categorias', ['categorias' => $categorias]);
-
-    }
-
-    /**
-     * Mostrar los productos de la base de datos.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
-    public function productoSeleccionado($id)
-    {
-
-        $producto_seleccionado = Producto::where('id',$id)->first()->toArray();
-        return view('producto_seleccionado', ['producto_seleccionado' => $producto_seleccionado]);
-
-    }
-
-    
-        /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function mostrarCarrito()
-    {
-
-        
-        return view('carrito');
-
-    }
-    
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
     /**
      * Update the specified resource in storage.
      *
@@ -165,19 +21,45 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+       
+        $validate = $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'nombre' => ['required', 'string'],
+            'apellidos' => ['required', 'string'],
+            'dni' => ['required', 'string','min:9', 'max:9'],
+            'direccion' => ['required', 'string'],
+            'password' => ['required', 'string', 'min:8'],
+            ]);
+
+            User::where('id',Auth::id())->update(['email'=>$validate['email'],
+            'nombre'=>$validate['nombre'],
+            'apellidos'=>$validate['apellidos'],
+            'dni'=>$validate['dni'],
+            'direccion'=>$validate['direccion'],
+            'password'=>$validate['password'],
+            ]);    
+
+        return redirect('/perfil')->with('success', 0);
+    
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * Baja del usuario.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function bajaUsuario(Request $request)
     {
-        //
+        User::where('id',Auth::id())->update(['baja'=>1]);
+
+        Auth::logout();
+        
+        return redirect('/');
+    
     }
 }

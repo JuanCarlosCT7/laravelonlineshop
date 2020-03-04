@@ -66,10 +66,10 @@
                @if (Auth::check())
 
                     <li><a href="{{url('/mis_pedidos')}}"><span class="icon icon-list-alt"></span> Mis pedidos</a></li>
-                    <li><a href="{{url('/perfil_usuario')}}"><span class="icon icon-user"></span> {{Auth::user()->username}}</a></li>
+                    <li><a href="{{url('/datos_usuario')}}"><span class="icon icon-user"></span> {{Auth::user()->username}}</a></li>
                     <!--<li><a href="{{url('/datos_usuario')}}"><span class="icon icon-user"></span>Datos Envío</a></li> -->
 
-                    <li><span><a href="{{url('/cerrar_sesion')}}"></span class="icon icon-forward"> Cerrar Sesión</a></li>
+                    <li><a href="{{url('/cerrar_sesion')}}"></span class="icon icon-power-off"></span> Cerrar Sesión</a></li>
 
                 @endif
 

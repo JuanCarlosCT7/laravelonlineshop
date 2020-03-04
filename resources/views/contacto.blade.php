@@ -24,18 +24,18 @@
         </div>
 
         <div class="col-md-4 ml-auto">
-            <div class="phone p-4 border mb-3">
+            <div class="p-4 border mb-3">
                 <span class="icon-phone text-primary h3"></span>
                 <span class="text-primary h4"><b>Teléfono</b></span>
                 <p class="mb-0">+34 672 77 77 77</p>
             </div>
         </div>
 
-        <div class="col-md-4 ml-auto">
+        <div class="col-md-4 ml-auto mb-5">
             <div class="p-4 border mb-3">
                 <span class="icon-envelope-open text-primary h3"></span>
                 <span class="text-primary h4"><b>Email</b></span>
-                <p class="mb-5">droneshop@droneshop.com</p>
+                <p class="mb-0">droneshop@droneshop.com</p>
             </div>
         </div>
     </div>

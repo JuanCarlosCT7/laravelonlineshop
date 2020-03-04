@@ -44,10 +44,11 @@ class LoginController extends Controller
         return 'username';
     }
 
+    
     protected function credentials(Request $request)
     {
         $credentials = $request->only($this->username(), 'password');
-        // Extra check if client status is active (1)
+        //Se tiene en cuenta el campo baja para el inicio de sesión del usuario
         $credentials['baja'] = 0;
         return $credentials;
     }

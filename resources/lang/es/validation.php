@@ -184,5 +184,6 @@ return [
         'username'              => 'usuario',
         'username_register'     => 'usuario',
         'year'                  => 'año',
+        
     ],
 ];
