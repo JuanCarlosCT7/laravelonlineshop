@@ -49,27 +49,15 @@ class CartController extends Controller
     */
 
 
-    public function update(Request $request){
-
-        $cantidad = $request->quantity;
-        $id_producto = $request->id;
-        $producto = Producto::findOrFail($id_producto);
-        $stock = $producto->stock;
-        
-        if ($quantity < $stock){
-        
-            Cart::update($id_producto,$request->quantity);
-
-        }else{
-        
-            }
-        
-    }
-
     public function delete($id){
 
         Cart::remove($id);
         return back();
     }
     
+    public function vaciarCarrito(){
+
+        Cart::clear();
+        return back();
+    }
 }

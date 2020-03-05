@@ -55,6 +55,9 @@ Route::get('/compra_confirmada', function() {
 Route::get('/mis_pedidos', "PedidoController@miPedido");
 
 
+Route::get('/info_pedido/{id}', "PedidoController@informacionPedido");
+
+
 
 Route::get('/descarga_pdf/{id}', "PedidoController@downloadPdf"); /* REVISAR DESCARGA DE PDF */
 
@@ -68,9 +71,11 @@ Route::get('/pedido_anulado/{id}', "PedidoController@anularPedido");
 
 Route::any('/add_carrito/{id}/{cantidad}', "CartController@add");
 
-//Route::post('/update_carrito', "CartController@update");
+
 
 Route::get('/delete_carrito/{id}', "CartController@delete");
+
+Route::get('/vaciar_carrito', "CartController@vaciarCarrito");
 
 //-------------------------------
 

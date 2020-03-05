@@ -16,11 +16,16 @@
                   <li><a href="#">Store builder</a></li>
                 </ul>
               </div>
+              <?php
+                $client = new \GuzzleHttp\Client();
+                $response = $client->request('GET', 'http://ip-api.com/json/?lang=es&fields=country,countryCode,region,regionName,city%27%27');
+                $localizacion = json_decode($response->getBody());
+              ?>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Mobile commerce</a></li>
-                  <li><a href="#">Dropshipping</a></li>
-                  <li><a href="#">Website development</a></li>
+                  @foreach ($localizacion as $item)
+                      <li><a href="#"><span class="icon icon-map-marker"></span> {{$item}}</a></li>
+                  @endforeach
                 </ul>
               </div>
               <div class="col-md-6 col-lg-4">
@@ -32,6 +37,9 @@
               </div>
             </div>
           </div>
+         
+           
+
           <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
             <h3 class="footer-heading mb-4">Promoción</h3>
             <a href="#" class="block-6">

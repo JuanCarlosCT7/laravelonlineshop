@@ -17,6 +17,17 @@
               </div>
             @endif
 
+          @if(Cart::isEmpty())
+
+            <table class="table table-bordered" mb-10>
+              <tr>
+                <td class="h3" bgcolor="#f5f5f0"><span class="icon-shopping-cart h1"></span><br>
+                  ¡El carrito esta vacío!</td>
+              </tr>
+            </table>
+
+          @else
+
             <table class="table table-bordered">
               <thead>
                 <tr>
@@ -49,14 +60,14 @@
                     <form action="{{url('/add_carrito/'. $item->id . '/1')}}" method="POST">
 
                     @csrf
-
+                      
                     <center>
                       <div class="input-group mb-1" style="max-width: 120px;">
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                         </div>
 
-                        <input type="number" autocomplete="off" class="form-control text-center" name="cantidad" value="{{ $item->quantity }}" min="1" max="5" readonly>
+                        <input type="number" autocomplete="off" class="form-control text-center" name="cantidad" value="{{ $item->quantity }}" min="1" readonly>
 
 
                         <div class="input-group-append">
@@ -81,6 +92,8 @@
                 
               </tbody>
             </table>
+
+            @endif
           </div>
         </div>
       </div>
@@ -90,8 +103,17 @@
           <div class="row mb-5">
 
             <div class="col-md-6">
-              <button onclick="location.href='{{url('/productos')}}'" class="btn btn-outline-primary btn-sm btn-block">Continuar Comprando</button>
+              <button onclick="location.href='{{url('/productos')}}'" class="btn btn-primary btn-sm btn-block"><span class="icon icon-long-arrow-left"></span>Continuar Comprando</button>
             </div>
+
+            @if(!Cart::isEmpty())
+
+            <div class="col-md-6">
+              <button onclick="location.href='{{url('/vaciar_carrito')}}'" class="btn btn-dark btn-sm btn-block">Vaciar Carrito</button>
+            </div>
+
+            @endif
+
           </div>
           <div class="row">
             <div class="col-md-12">

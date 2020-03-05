@@ -41,6 +41,19 @@
             
               @endforeach
 
+              
+            </div>
+
+            <div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-center">
+                  <ul class="pagination justify-content-md-center">
+                      
+                      {!! $destacados->render() !!}
+                  
+  
+                  </ul>
+              </div>
+            </div>
 
             </div>
           </div>

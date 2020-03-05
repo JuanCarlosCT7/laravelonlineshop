@@ -24,6 +24,7 @@
 
                           @if($pedido['estado'] == 'Pendiente Procesamiento')
 
+                          <td><a class="btn btn-primary" href="{{ url('/info_pedido/' . $pedido['id']) }}">Info</a></td>
                           <td><a class="btn btn-danger" href="{{ url('/anular_pedido/' . $pedido['id']) }}">Anular</a></td>
                           <td><a class="btn btn-success" href="{{ url('/descarga_pdf/' . $pedido['id']) }}">PDF</a></td>
 

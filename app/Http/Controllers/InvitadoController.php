@@ -31,8 +31,10 @@ class InvitadoController extends Controller
                     ->orWhere('fecha_inicial', '<', date('Y-m-d'))
                     ->orWhere('fecha_final', '>', date('Y-m-d'))
                     ->orWhere('fecha_final', '>', 'fecha_inicial')
-                    ->get()->toArray();
+                    ->paginate(3); //->get()-toArray(); Para mostrar el nombre de la categoría
 
+
+/* Mostrar el nombre de la categoría en los artículos destacados, 
         $i = -1;
 
         foreach ($productos_destacados  as $producto) {
@@ -45,7 +47,7 @@ class InvitadoController extends Controller
             $productos_destacados[$i]['nombre_categoria'] = $categoria_producto->nombre;
 
         }
-
+*/
         return view('index', ['destacados' => $productos_destacados] );
 
     }

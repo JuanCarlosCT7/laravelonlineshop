@@ -43,7 +43,7 @@ class PedidoController extends Controller
         }
         
             $data = [
-                'titulo' => 'Pedido LaravelShop'
+                'titulo' => 'Pedido DroneShop'
             ];
          
             $data = PDF::loadView('email', $data)
@@ -65,7 +65,7 @@ class PedidoController extends Controller
                 $mail->Port       = 587;                                    // TCP port to connect to
             
                 //Recipients
-                $mail->setFrom('droneshopweb7@gmail.com', 'Shop');
+                $mail->setFrom('droneshopweb7@gmail.com', 'DroneShop');
                 $mail->addAddress(auth()->user()->email, auth()->user()->nombre);     // Add a recipient   // Name is optional
                 $mail->addReplyTo('info@example.com', 'Information');
             
@@ -75,7 +75,7 @@ class PedidoController extends Controller
             
                 // Content
                 $mail->isHTML(true);                                  // Set email format to HTML
-                $mail->Subject = 'Este es tu pedido,¡Gracias por confiar en nosotros!';
+                $mail->Subject = 'Este es tu pedido,Gracias por confiar en nosotros!';
                 $mail->Body    = view('email') ;
                 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
             
@@ -100,10 +100,55 @@ class PedidoController extends Controller
      */
     public function miPedido()
     {
-        $mispedidos = Pedido::where('usuario_id', Auth::id())->orderBy('fecha','DESC')->get(); //->paginate(5)
+        $mispedidos = Pedido::where('usuario_id', Auth::id())->orderBy('id','DESC')->get(); //->paginate(5)
         return view('/cliente/mis_pedidos', ['mispedidos' => $mispedidos]);
 
-    
+        $data = LineaPedido::where("pedido_id", $id)->get()->toArray();
+        $total = 0;
+        $i = -1;
+
+        foreach ($data as $producto) {
+
+            $i++;
+            $producto_seleccionado =  Producto::where("id", $producto['producto_id'])->first();
+
+            $data[$i]['nombre'] = $producto_seleccionado->nombre;
+            $data[$i]['precio_total'] = $producto['precio']*$producto['cantidad'];
+
+            $total += $producto['precio']*$producto['cantidad'];
+
+        }
+
+        $data['total'] = $total;
+
+    }
+
+     /**
+     * Mostrar informacion de los pedidos.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function informacionPedido($id)
+    {
+        $productos = LineaPedido::where("pedido_id", $id)->get()->toArray();
+        $total = 0;
+        $i = -1;
+
+        foreach ($productos as $producto) {
+
+            $i++;
+            $producto_seleccionado =  Producto::where("id", $producto['producto_id'])->first();
+
+            $productos[$i]['nombre'] = $producto_seleccionado->nombre;
+            $productos[$i]['precio_total'] = $producto['precio']*$producto['cantidad'];
+
+            $total += $producto['precio']*$producto['cantidad'];
+
+        }
+
+        $productos['total'] = $total;
+
+        return view('cliente/info_pedido', ['productos' => $productos]);
 
     }
 
@@ -123,13 +168,33 @@ class PedidoController extends Controller
 
     public function downloadPdf($id)
     {
-        $data = LineaPedido::where("pedido_id", $id)->get();
+        $data = LineaPedido::where("pedido_id", $id)->get()->toArray();
+        $total = 0;
+        $i = -1;
 
-        $pdf= PDF::loadView('email', $data)->save(storage_path('app/public/') . 'pedido.pdf');
-        return $pdf->download('pedido.pdf');
+        foreach ($data as $producto) {
+
+            $i++;
+            $producto_seleccionado =  Producto::where("id", $producto['producto_id'])->first();
+
+            $data[$i]['nombre'] = $producto_seleccionado->nombre;
+            $data[$i]['precio_total'] = $producto['precio']*$producto['cantidad'];
+
+            $total += $producto['precio']*$producto['cantidad'];
+
+        }
+
+        $data['total'] = $total;
+
+        $pedido = Pedido::where('id', $id)->first();
+
+        $pdf= PDF::loadView('factura', array('productos' => $data,'pedido' => $pedido
+
+        ))->save(storage_path('app/public/') . 'pedido.pdf');
+        return $pdf->download('pedido.pdf'); 
         
         
     }
-
+    
 
 }

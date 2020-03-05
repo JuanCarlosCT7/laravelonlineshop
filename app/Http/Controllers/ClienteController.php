@@ -9,6 +9,9 @@ use App\Providers\RouteServiceProvider;
 
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use App\Pedido;
+use App\Producto;
+use App\LineaPedido;
 use App\User;
 use Auth;
 
@@ -55,11 +58,28 @@ class ClienteController extends Controller
      */
     public function bajaUsuario(Request $request)
     {
-        User::where('id',Auth::id())->update(['baja'=>1]);
+        User::where("username", Auth::user()->username)->update(["baja"=> 1]);
+        $pedidos = Pedido::where("usuario_id", Auth::id())->get();
+
+        foreach($pedidos as $pedido){
+
+            if($pedido->estado == "Pendiente Procesamiento"){
+
+                $pedido->update(["estado"=>"Anulado"]);
+                $productos_pedido = LineaPedido::where("pedido_id", $pedido->id)->get();
+
+                foreach($productos_pedido as $producto){
+
+                    Producto::where("id", $producto->producto_id)->increment("stock", $producto->cantidad);
+                }
+            }
+        }
 
         Auth::logout();
         
         return redirect('/');
     
     }
+
+    
 }
