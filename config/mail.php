@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'droneshopweb7@gmail.com',
+        'address' => 'droneshopweb7@gmail.com', //Correo del remitente  //Configuración para el restablecimiento de contraseña
         'name' => env('MAIL_FROM_NAME', 'Example'),
     ],
 

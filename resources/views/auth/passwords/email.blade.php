@@ -1,6 +1,6 @@
 @include('invitado/header')
 
-
+<!-- VISTA PARA INTRODUCIR LA DIRECCIÓN DE CORREO ELECTRONICO EN LA CUAL NOS LLEGARÁ EL CORREO PARA RESTABLECER LA CONTRASEÑA -->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

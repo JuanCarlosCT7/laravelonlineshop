@@ -38,6 +38,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Envio de notificación de restablecimiento de contraseña.
+     *
+     * @param  string  $token
+     * @return void
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new MyResetPassword($token));

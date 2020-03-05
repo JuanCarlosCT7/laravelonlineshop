@@ -10,10 +10,10 @@
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Sell online</a></li>
-                  <li><a href="#">Features</a></li>
-                  <li><a href="#">Shopping cart</a></li>
-                  <li><a href="#">Store builder</a></li>
+                  <li><a href="#"></a></li>
+                  <li><a href="#">Caracteristicas</a></li>
+                  <li><a href="#">Carrito de compras</a></li>
+                  <li><a href="#"></a></li>
                 </ul>
               </div>
               <?php
@@ -30,7 +30,7 @@
               </div>
               <div class="col-md-6 col-lg-4">
                 <ul class="list-unstyled">
-                  <li><a href="#">Point of sale</a></li>
+                  <li><a href="#">Punto de venta</a></li>
                   <li><a href="#">Hardware</a></li>
                   <li><a href="#">Software</a></li>
                 </ul>

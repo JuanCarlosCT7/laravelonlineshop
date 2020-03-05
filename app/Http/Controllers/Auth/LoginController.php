@@ -14,23 +14,24 @@ class LoginController extends Controller
     | Login Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | Este controlador maneja la autenticación de usuarios para la aplicación y 
+    | los redirige a su pantalla de inicio. El controlador utiliza un trait(https://www.php.net/manual/es/language.oop5.traits.php) 
+    | para proporcionar 
+    | convenientemente su funcionalidad a sus aplicaciones.
     |
     */
 
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
+     * Donde redirigir a los usuarios después de iniciar sesión.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
+     * Crea una nueva instancia de controlador.
      *
      * @return void
      */

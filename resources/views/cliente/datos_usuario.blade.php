@@ -8,7 +8,7 @@
         <div class="col-md-12">
           <h2 class="h3 mb-3 text-black"><span class="icon-retweet"></span> &nbsp; Actualizar Datos Usuario: {{Auth::user()->username}}</h2>
         </div>
-        
+        <!-- FORMULARIO PARA ACTUALIZAR LOS DATOS DEL USUARIO -->
         <div class="col-md-6">
 
             <form action="{{ url('cliente/modificar_datos') }}" method="POST">
@@ -109,8 +109,9 @@
               </div>
             </form>
           </div>  
+          <!-- FORMULARIO PARA ACTUALIZAR LOS DATOS DEL USUARIO -->
 
-          <!-- ----------------------------------------------------------------------------------------------------- -->
+          <!-- SECCIÓN CON DIFERENTES ACCIONES PARA EL USUARIO -->
           <div class="col-md-6">
               
               <div class="p-3 p-lg-5 border">
@@ -159,7 +160,7 @@
               </div>
          
           </div> 
-          <!-- --------------------------------------------------------------------------------------------------- -->
+          <!-- SECCIÓN CON DIFERENTES ACCIONES PARA EL USUARIO -->
         
        </div>
       </div>

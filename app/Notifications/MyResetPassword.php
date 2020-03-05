@@ -17,7 +17,7 @@ class MyResetPassword extends ResetPassword
     }
 
     /**
-     * Get the mail representation of the notification.
+     * Obtener la notificacion de correo para restablecer la contraseña.
      *
      * @param  mixed  $notifiable
      * @return \Illuminate\Notifications\Messages\MailMessage

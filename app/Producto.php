@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\DB;
 class Producto extends Model
 {
 
-    public $timestamps = false;
+    //Laravel por defecto espera las columnas created_at y updated_at. 
+    //Para que los campos no estén por defecto añadimos public $timestamps = false; en el modelo.
+
+    public $timestamps = false; //Desactivamos el uso de $timestamps
 
     
     protected $table = 'producto';

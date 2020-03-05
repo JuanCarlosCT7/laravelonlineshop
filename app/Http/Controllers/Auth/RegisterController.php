@@ -16,23 +16,23 @@ class RegisterController extends Controller
     | Register Controller
     |--------------------------------------------------------------------------
     |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
+    | Este controlador maneja el registro de nuevos usuarios, así como su validación 
+    | y creación. Por defecto, este controlador utiliza un trait(https://www.php.net/manual/es/language.oop5.traits.php)
+    | para proporcionar esta funcionalidad sin requerir ningún código adicional.
     |
     */
 
     use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
+     * Donde redirigir a los usuarios después de iniciar sesión.
      *
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
+     * Crea una nueva instancia de controlador.
      *
      * @return void
      */
@@ -42,7 +42,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Obtener un validador para una solicitud de registro entrante.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -62,7 +62,7 @@ class RegisterController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Crear una nueva instancia de usuario después de un registro válido.
      *
      * @param  array  $data
      * @return \App\User

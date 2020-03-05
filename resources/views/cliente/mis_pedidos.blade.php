@@ -1,6 +1,6 @@
 @include("cliente/header")
 
-
+<!-- VISTA EN LA QUE SE MUESTRAN LOS PEDIDOS REALIZADOS POR EL USUARIO -->
 <div class="site-section">
     <div class="container">
       

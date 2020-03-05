@@ -171,7 +171,7 @@ return [
         'name'                  => 'nombre',
         'password'              => 'contraseña',
         'password_confirmation' => 'confirmación de la contraseña',
-        'password_register'     => 'contraseña',
+        'password_register'     => 'contraseña', //Al tener una vista con el login y el registro en el mismo sitio, creo este mensaje de error para poder realizar las validaciones en el registro
         'password_register_confirmation' => 'confirmación de la contraseña',
         'phone'                 => 'teléfono',
         'price'                 => 'precio',
@@ -182,7 +182,7 @@ return [
         'time'                  => 'hora',
         'title'                 => 'título',
         'username'              => 'usuario',
-        'username_register'     => 'usuario',
+        'username_register'     => 'usuario',  //Al tener una vista con el login y el registro en el mismo sitio, creo este mensaje de error para poder realizar las validaciones en el registro
         'year'                  => 'año',
         
     ],

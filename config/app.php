@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'es',
+    'locale' => 'es', //Instalación de la carpeta lang>es con los mensajes en Español
 
     /*
     |--------------------------------------------------------------------------

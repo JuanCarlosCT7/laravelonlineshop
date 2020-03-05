@@ -28,7 +28,6 @@ Route::get('/proceder_compra', function() {
 });
 
 
-
 Route::get('/cerrar_sesion', function() {
     Auth::logout();
     return redirect('/');
@@ -59,7 +58,7 @@ Route::get('/info_pedido/{id}', "PedidoController@informacionPedido");
 
 
 
-Route::get('/descarga_pdf/{id}', "PedidoController@downloadPdf"); /* REVISAR DESCARGA DE PDF */
+Route::get('/descarga_pdf/{id}', "PedidoController@downloadPdf"); 
 
 
 Route::get('/anular_pedido/{id}', function($id) {

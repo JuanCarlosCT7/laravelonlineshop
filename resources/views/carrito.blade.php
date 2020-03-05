@@ -11,13 +11,13 @@
         <div class="col-md-12">
           <div class="site-blocks-table">
 
-            @if (Session::has('error'))
+            @if (Session::has('error')) <!-- MENSAJE DE ERROR CUANDO EL STOCK ES INFERIOR A LA CANTIDAD AÑADIDA -->
               <div class="alert alert-danger" role="alert">
                 No hay suficiente <b>stock</b> para este artículo.
               </div>
             @endif
 
-          @if(Cart::isEmpty())
+          @if(Cart::isEmpty()) <!-- SI EL CARRITO ESTÁ VACÍO -->
 
             <table class="table table-bordered" mb-10>
               <tr>

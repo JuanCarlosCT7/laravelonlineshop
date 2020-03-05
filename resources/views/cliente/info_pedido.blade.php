@@ -1,6 +1,6 @@
 @include("cliente/header")
 
-
+<!-- VISTA EN LA QUE SE MUESTRA LA INFORMACIÓN DEL PEDIDO QUE HEMOS SELECCIONADO ANTERIOR MENTE -->
 <div class="site-section">
     <div class="container">
 

@@ -2,7 +2,7 @@
 @include("invitado/header")
 
 
-
+<!-- LOGIN DE USUARIO -->
 <div class="site-section">
 	
     <div class="container">
@@ -63,7 +63,9 @@
             </div>
           </form>
         </div>
-        
+  <!-- LOGIN DE USUARIO -->
+
+  <!-- REGISTRO DE USUARIO -->
         <div class="col-md-6">
 
           <form action="{{ route('register') }}" method="POST">
@@ -199,6 +201,8 @@
             </div>
           </form>
         </div>
+
+  <!-- REGISTRO DE USUARIO -->
       </div>
         
        </div>
