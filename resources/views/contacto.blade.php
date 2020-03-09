@@ -8,11 +8,18 @@
 <div class="site-section">
     <div class="container">
         <div class="row">
-            
-            <div class="col-md-12">
-                <div class="float-md-left mb-4"><h2 class="text-black h3">CONTACTO</h2></div>
-            </div>
-         
+
+        <div class="col-md-12">
+            <h2 class="text-black h4">ENCUENTRANOS</h2>
+        </div>
+
+        <div class="col-md-12" style="height: 300px;">
+          {!! Mapper::render() !!}
+        </div>
+              
+        <div class="col-md-12">
+            <div class="float-md-left mb-4"><h2 class="text-black h3"></h2></div>
+        </div> 
 
         <div class="col-md-4 ml-auto">
             <div class="p-4 border mb-3">

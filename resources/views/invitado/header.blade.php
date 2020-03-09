@@ -38,6 +38,9 @@
 <!-- ---------------------------------------------------------------------------------------------- -->
   
   <body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtuQVgZPHI2RUtNDLNfeZOa2K5Q3LaxMc&language=ar&region=EG">
+    </script>
+
   
   <div class="site-wrap">
   

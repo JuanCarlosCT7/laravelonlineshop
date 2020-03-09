@@ -163,6 +163,9 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        Bmatovu\LaravelXml\LaravelXmlServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Cornford\Googlmapper\MapperServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,6 +233,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'Xml' => Bmatovu\LaravelXml\LaravelXml::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
 
     ],
 

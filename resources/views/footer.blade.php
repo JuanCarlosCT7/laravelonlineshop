@@ -18,7 +18,7 @@
               </div>
               <?php
                 $client = new \GuzzleHttp\Client();
-                $response = $client->request('GET', 'http://ip-api.com/json/?lang=es&fields=country,countryCode,region,regionName,city%27%27');
+                $response = $client->request('GET', 'http://ip-api.com/json/?lang=es&24.48.0.1?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,query');
                 $localizacion = json_decode($response->getBody());
               ?>
               <div class="col-md-6 col-lg-4">

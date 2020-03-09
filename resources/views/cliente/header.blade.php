@@ -38,6 +38,8 @@
 <!-- ---------------------------------------------------------------------------------------------- -->
   
   <body>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtuQVgZPHI2RUtNDLNfeZOa2K5Q3LaxMc&language=ar&region=EG">
+    </script>
   
   <div class="site-wrap">
   
@@ -52,16 +54,60 @@
                 <ul class="header-links float-right">
 
                   @if (Auth::check() && Auth::user()->tipo=='admin')
-              
-                  <li class="dropdown" ><a href="#" class=" dropdown-toggle" data-toggle="dropdown">Administrar<span></span></a>
-                      <ul class="dropdown-menu">
-                          <li><a href="{{url('/productos')}}" class="administrarproductos">Productos</a></li>
-                          <li><a href="{{url('/categorias')}}" class="administrarcategorias">Categorías</a></li><br>
-                          <li><a href="{{url('/pedidos')}}" class="administrarpedidos">Pedidos</a></li>
+
+                  <!-- IMPORTAR XML -->
+                  <li class="dropdown" ><a href="#" class=" dropdown-toggle" data-toggle="dropdown">Importar EXCEL<span></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                          <a href="{{url('/importarEXCELproductos')}}" class="importarproductosexcel">Productos</a>
+                          <a href="{{url('/importarEXCELcategorias')}}" class="importarcategoriasexcel">Categorias</a>
+                        </li>
                       </ul>
                   </li>
+                  <!-- IMPORTAR XML -->
+
+                  <!-- EXPORTAR EXCEL -->
+                  <li class="dropdown" ><a href="#" class=" dropdown-toggle" data-toggle="dropdown">Exportar EXCEL<span></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                          <a href="{{url('/exportarEXCELproductos')}}" class="exportarproductos">Productos</a>
+                        </li>
+                        <li>
+                          <a href="{{url('/exportarEXCELcategorias')}}" class="exportarcategorias">Categorías</a>
+                        </li>
+                        <li>
+                          <a href="{{url('/exportarEXCELpedidos')}}" class="exportarpedidos">Pedidos</a>
+                        </li>
+                      </ul>
+                  </li>
+                <!-- EXPORTAR EXCELL -->
+
+                  <!-- IMPORTAR XML -->
+                  <li class="dropdown" ><a href="#" class=" dropdown-toggle" data-toggle="dropdown">Importar XML<span></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                          <a href="{{url('/importarXMLproductos')}}" class="importarproductos">Productos</a>
+                          <a href="{{url('/importarXMLcategorias')}}" class="importarcategorias">Categorias</a>
+                        </li>
+                      </ul>
+                  </li>
+                  <!-- IMPORTAR XML -->
+                  <!-- EXPORTAR XML -->
+                  <li class="dropdown" ><a href="#" class=" dropdown-toggle" data-toggle="dropdown">Exportar XML<span></span></a>
+                      <ul class="dropdown-menu">
+                          <li>
+                            <a href="{{url('/exportarXMLproductos')}}" class="exportarproductos">Productos</a>
+                            <a href="{{url('/descargarXMLproductos')}}" class="descargarproductos">Descargar</a>
+                          </li>
+                          <li>
+                            <a href="{{url('/exportarXMLcategorias')}}" class="exportarcategorias">Categorías</a>
+                            <a href="{{url('/descargarXMLcategorias')}}" class="descargarcategorias">Descargar</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <!-- EXPORTAR XML -->
                   
-                @endif
+                  @endif
                 
                @if (Auth::check())
 
